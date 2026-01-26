@@ -47,10 +47,10 @@ export function CartResume() {
           <p>Total</p>
           <p>{formatCurrency(finalPrice + deliveryTax)}</p>
         </div>
-
       </Container>
-      <Button style={{ width: '100%', marginTop: 30 }} onClick={submitOrder}>Finalizar pedido</Button>
+      <Button style={{ width: '100%', marginTop: 30 }} onClick={submitOrder}>
+        Finalizar pedido
+      </Button>
     </div>
-
   );
 }

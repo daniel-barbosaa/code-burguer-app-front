@@ -1,6 +1,4 @@
-import React, {
-  createContext, useContext, useState, useEffect,
-} from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const UserContext = createContext({});
 
@@ -10,7 +8,10 @@ export function UserProvider({ children }) {
   const putUserData = async (userInfoData) => {
     setUserData(userInfoData);
 
-    await localStorage.setItem('codeburguer:userData', JSON.stringify(userInfoData));
+    await localStorage.setItem(
+      'codeburguer:userData',
+      JSON.stringify(userInfoData),
+    );
   };
 
   const userLogOut = async () => {

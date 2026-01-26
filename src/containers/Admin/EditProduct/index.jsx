@@ -1,5 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-undef */
 /* eslint-disable react/jsx-props-no-spreading */
 import { yupResolver } from '@hookform/resolvers/yup';
 import Checkbox from '@mui/material/Checkbox';
@@ -13,7 +11,14 @@ import * as Yup from 'yup';
 import { ErrorMessage } from '../../../components';
 import api from '../../../services/api';
 import {
-  Container, Label, Input, ButtonStyle, LabelUpload, IconUpload, ContainerCheckBox, TitleText,
+  Container,
+  Label,
+  Input,
+  ButtonStyle,
+  LabelUpload,
+  IconUpload,
+  ContainerCheckBox,
+  TitleText,
 } from './style';
 
 export function EditProduct() {
@@ -24,7 +29,10 @@ export function EditProduct() {
     offer: Yup.bool(),
   });
   const {
-    register, handleSubmit, control, formState: { errors },
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -45,11 +53,14 @@ export function EditProduct() {
     productDataFormData.append('offer', data.offer);
 
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-    await toast.promise(api.put(`products/${product.id}`, productDataFormData), {
-      pending: 'Aguarde, editando produto',
-      success: 'Produto editado com sucesso',
-      error: 'Falha ao editar produto, tente novamente',
-    });
+    await toast.promise(
+      api.put(`products/${product.id}`, productDataFormData),
+      {
+        pending: 'Aguarde, editando produto',
+        success: 'Produto editado com sucesso',
+        error: 'Falha ao editar produto, tente novamente',
+      },
+    );
 
     setTimeout(() => {
       navigate('/listar-produtos');
@@ -68,26 +79,33 @@ export function EditProduct() {
 
   return (
     <Container>
-
       <form onSubmit={handleSubmit(onSubmit)}>
         <TitleText>EDITAR PRODUTO</TitleText>
         <div>
           <Label>Nome</Label>
-          <Input type="text" {...register('name')} defaultValue={product.name} />
+          <Input
+            type="text"
+            {...register('name')}
+            defaultValue={product.name}
+          />
           <ErrorMessage>{errors.name?.message}</ErrorMessage>
         </div>
         <div>
           <Label>Preço</Label>
-          <Input type="number" {...register('price')} defaultValue={product.price} />
+          <Input
+            type="number"
+            {...register('price')}
+            defaultValue={product.price}
+          />
           <ErrorMessage>{errors.price?.message}</ErrorMessage>
         </div>
         <div>
           <LabelUpload>
             {filename || (
-            <>
-              <IconUpload />
-              Escolha a imagem do produto
-            </>
+              <>
+                <IconUpload />
+                Escolha a imagem do produto
+              </>
             )}
             <Input
               type="file"
@@ -122,7 +140,11 @@ export function EditProduct() {
         </div>
 
         <ContainerCheckBox>
-          <Checkbox defaultChecked={product.offer} {...register('offer')} style={{ margin: '0' }} />
+          <Checkbox
+            defaultChecked={product.offer}
+            {...register('offer')}
+            style={{ margin: '0' }}
+          />
           <Label style={{ margin: '0' }}>Produto em oferta?</Label>
         </ContainerCheckBox>
         <ButtonStyle>Editar produto</ButtonStyle>

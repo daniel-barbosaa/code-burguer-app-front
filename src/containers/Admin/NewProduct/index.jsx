@@ -1,5 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-undef */
 /* eslint-disable react/jsx-props-no-spreading */
 import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useEffect, useState } from 'react';
@@ -12,7 +10,13 @@ import * as Yup from 'yup';
 import { ErrorMessage } from '../../../components';
 import api from '../../../services/api';
 import {
-  Container, Label, Input, ButtonStyle, LabelUpload, IconUpload, TitleText,
+  Container,
+  Label,
+  Input,
+  ButtonStyle,
+  LabelUpload,
+  IconUpload,
+  TitleText,
 } from './style';
 
 export function NewProduct() {
@@ -20,16 +24,24 @@ export function NewProduct() {
     name: Yup.string().required('Campo vazio, informe o nome do produto!'),
     price: Yup.string().required('Campo vazio, informe o preço do produto!'),
     category: Yup.object().required('Escolha uma categoria!'),
-    file: Yup.mixed().test('Required', 'Adicione a imagem!', (value) => {
-      return value?.length > 0;
-    }).test('fileSize', 'Adicione arquivo até 2mb', (value) => {
-      return value[0]?.size <= 200000;
-    }).test('type', 'Adicione apenas arquivos jpeg', (value) => {
-      return (value[0]?.type === 'image/jpeg') || (value[0]?.type === 'image/png');
-    }),
+    file: Yup.mixed()
+      .test('Required', 'Adicione a imagem!', (value) => {
+        return value?.length > 0;
+      })
+      .test('fileSize', 'Adicione arquivo até 2mb', (value) => {
+        return value[0]?.size <= 200000;
+      })
+      .test('type', 'Adicione apenas arquivos jpeg', (value) => {
+        return (
+          value[0]?.type === 'image/jpeg' || value[0]?.type === 'image/png'
+        );
+      }),
   });
   const {
-    register, handleSubmit, control, formState: { errors },
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -84,10 +96,10 @@ export function NewProduct() {
         <div>
           <LabelUpload>
             {filename || (
-            <>
-              <IconUpload />
-              Escolha a imagem do produto
-            </>
+              <>
+                <IconUpload />
+                Escolha a imagem do produto
+              </>
             )}
             <Input
               type="file"

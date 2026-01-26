@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { StyleSheetManager } from 'styled-components';
 
@@ -7,16 +6,28 @@ import { CategoryCarousel, OffersCarousel } from '../../components/index';
 import { Container, HomeImg } from './style';
 
 export function Home() {
-  const filteredProps = ['isRTL', 'verticalMode', 'sliderPosition', 'swipedSliderPosition', 'isSwiping', 'transitionMs', 'tiltEasing', 'outerSpacing', 'active', 'itemPosition'];
+  const filteredProps = [
+    'isRTL',
+    'verticalMode',
+    'sliderPosition',
+    'swipedSliderPosition',
+    'isSwiping',
+    'transitionMs',
+    'tiltEasing',
+    'outerSpacing',
+    'active',
+    'itemPosition',
+  ];
 
   return (
     <Container>
       <HomeImg src={HomeLogo} alt="logo-da-home" />
-      <StyleSheetManager shouldForwardProp={(prop) => !filteredProps.includes(prop)}>
+      <StyleSheetManager
+        shouldForwardProp={(prop) => !filteredProps.includes(prop)}
+      >
         <CategoryCarousel />
         <OffersCarousel />
       </StyleSheetManager>
-
     </Container>
   );
 }

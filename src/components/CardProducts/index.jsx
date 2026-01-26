@@ -4,9 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useCart } from '../../hooks/CartContext';
 import { Button } from '../index';
-import {
-  Container, Image, ProductName, ProductsPrice,
-} from './style';
+import { Container, Image, ProductName, ProductsPrice } from './style';
 
 export function CardProducts({ product }) {
   const navigate = useNavigate();
@@ -17,17 +15,15 @@ export function CardProducts({ product }) {
       <div>
         <ProductName>{product.name}</ProductName>
         <ProductsPrice>{product.formatedPrice}</ProductsPrice>
-        <Button onClick={() => {
-          putProdutsInCart(product);
-          navigate('/carrinho');
-        }}
+        <Button
+          onClick={() => {
+            putProdutsInCart(product);
+            navigate('/carrinho');
+          }}
         >
           Adicionar
-
         </Button>
       </div>
-
     </Container>
-
   );
 }

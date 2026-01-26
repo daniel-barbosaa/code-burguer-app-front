@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 import { useLocation } from 'react-router-dom';
@@ -19,12 +18,11 @@ export function Admin() {
     <Container>
       <SideMenuAdmin path={pathname} />
       <ContainerItems>
-        {location.pathname === paths.Order && <Orders /> }
-        {location.pathname === paths.Products && <ListProduts /> }
-        {location.pathname === paths.NewProduct && <NewProduct /> }
-        {location.pathname === paths.EditProduct && <EditProduct /> }
+        {location.pathname === paths.Order && <Orders />}
+        {location.pathname === paths.Products && <ListProduts />}
+        {location.pathname === paths.NewProduct && <NewProduct />}
+        {location.pathname === paths.EditProduct && <EditProduct />}
       </ContainerItems>
-
     </Container>
   );
 }

@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable array-callback-return */
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { StyleSheetManager } from 'styled-components';
@@ -9,7 +7,11 @@ import { CardProducts } from '../../components/index';
 import api from '../../services/api';
 import formatCurrency from '../../utils/formatCurrency';
 import {
-  Container, ProductImg, ButtonCategory, CategoryMenu, ProductsContainer,
+  Container,
+  ProductImg,
+  ButtonCategory,
+  CategoryMenu,
+  ProductsContainer,
 } from './style';
 
 export function Products() {
@@ -33,7 +35,10 @@ export function Products() {
     async function loadProducts() {
       const { data } = await api.get('products');
 
-      const allProducts = data.map((product) => ({ ...product, formatedPrice: formatCurrency(product.price) }));
+      const allProducts = data.map((product) => ({
+        ...product,
+        formatedPrice: formatCurrency(product.price),
+      }));
 
       setProducts(allProducts);
     }
@@ -46,7 +51,9 @@ export function Products() {
     if (activedCategory === 0) {
       setfilteredProducts(products);
     } else {
-      const newFilteredProducts = products.filter((product) => product.category_id === activedCategory);
+      const newFilteredProducts = products.filter(
+        (product) => product.category_id === activedCategory,
+      );
 
       setfilteredProducts(newFilteredProducts);
     }
@@ -56,20 +63,32 @@ export function Products() {
     <Container>
       <ProductImg src={ProductLogo} alt="logo-do-produto" />
       <CategoryMenu>
-        {categories && categories.map((category) => {
-          return (
-            <StyleSheetManager key={category.id} shouldForwardProp={(prop) => prop !== 'isactived'}>
-              <ButtonCategory key={category.id} onClick={() => { setActivedCategory(category.id); }} isactived={activedCategory === category.id ? 'true' : ''}>{category.name}</ButtonCategory>
-            </StyleSheetManager>
-          );
-        })}
+        {categories &&
+          categories.map((category) => {
+            return (
+              <StyleSheetManager
+                key={category.id}
+                shouldForwardProp={(prop) => prop !== 'isactived'}
+              >
+                <ButtonCategory
+                  key={category.id}
+                  onClick={() => {
+                    setActivedCategory(category.id);
+                  }}
+                  isactived={activedCategory === category.id ? 'true' : ''}
+                >
+                  {category.name}
+                </ButtonCategory>
+              </StyleSheetManager>
+            );
+          })}
       </CategoryMenu>
       <ProductsContainer>
-        {filteredProducts && filteredProducts.map((product) => {
-          return <CardProducts key={product.id} product={product} />;
-        })}
+        {filteredProducts &&
+          filteredProducts.map((product) => {
+            return <CardProducts key={product.id} product={product} />;
+          })}
       </ProductsContainer>
-
     </Container>
   );
 }

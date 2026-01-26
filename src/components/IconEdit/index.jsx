@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -6,7 +5,13 @@ import Car from '../../assets/ico-car.png';
 import Pessoa from '../../assets/ico-pessoa.png';
 import { useUser } from '../../hooks/UserContext';
 import {
-  Container, ContainerLeft, PageLink, ContainerRight, ContainerText, Line, PageLinkLogOut,
+  Container,
+  ContainerLeft,
+  PageLink,
+  ContainerRight,
+  ContainerText,
+  Line,
+  PageLinkLogOut,
 } from './style';
 
 export function Header() {
@@ -22,12 +27,14 @@ export function Header() {
 
   return (
     <Container>
-
       <ContainerLeft>
         <PageLink to="/" isactive={pathname === '/' ? 'true' : ''}>
           Home
         </PageLink>
-        <PageLink to="/produtos" isactive={pathname.includes('produtos') ? 'true' : ''}>
+        <PageLink
+          to="/produtos"
+          isactive={pathname.includes('produtos') ? 'true' : ''}
+        >
           Ver produtos
         </PageLink>
       </ContainerLeft>
@@ -44,15 +51,11 @@ export function Header() {
           <p>
             Olá
             {', '}
-
             {userData.name}
           </p>
-          <PageLinkLogOut onClick={logOut}>
-            Sair
-          </PageLinkLogOut>
+          <PageLinkLogOut onClick={logOut}>Sair</PageLinkLogOut>
         </ContainerText>
       </ContainerRight>
-
     </Container>
   );
 }

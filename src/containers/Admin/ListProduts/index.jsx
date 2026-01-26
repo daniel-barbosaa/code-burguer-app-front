@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/jsx-props-no-spreading */
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import Paper from '@mui/material/Paper';
@@ -15,9 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import paths from '../../../constants/paths';
 import api from '../../../services/api';
 import formatCurrency from '../../../utils/formatCurrency';
-import {
-  Container, Img, EditIcon,
-} from './style';
+import { Container, Img, EditIcon } from './style';
 
 export function ListProduts() {
   const [products, setProducts] = useState();
@@ -58,20 +54,25 @@ export function ListProduts() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {products && products.map((product) => (
-              <TableRow
-                key={product.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {product.name}
-                </TableCell>
-                <TableCell>{formatCurrency(product.price)}</TableCell>
-                <TableCell align="center">{isOffer(product.offer)}</TableCell>
-                <TableCell align="center"><Img src={product.url} alt="imagen do produto" /></TableCell>
-                <TableCell><EditIcon onClick={() => editProduct(product)} /></TableCell>
-              </TableRow>
-            ))}
+            {products &&
+              products.map((product) => (
+                <TableRow
+                  key={product.id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {product.name}
+                  </TableCell>
+                  <TableCell>{formatCurrency(product.price)}</TableCell>
+                  <TableCell align="center">{isOffer(product.offer)}</TableCell>
+                  <TableCell align="center">
+                    <Img src={product.url} alt="imagen do produto" />
+                  </TableCell>
+                  <TableCell>
+                    <EditIcon onClick={() => editProduct(product)} />
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>

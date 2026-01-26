@@ -1,7 +1,5 @@
 /* eslint-disable operator-assignment */
-import React, {
-  createContext, useContext, useState, useEffect,
-} from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const CartContext = createContext({});
 
@@ -9,7 +7,10 @@ export function CartProvider({ children }) {
   const [cartProducts, setCartProduts] = useState([]);
 
   const updateLocalStorage = async (products) => {
-    await localStorage.setItem('codeburguer:cartInfo', JSON.stringify(products));
+    await localStorage.setItem(
+      'codeburguer:cartInfo',
+      JSON.stringify(products),
+    );
   };
   const putProdutsInCart = async (product) => {
     const cartIndex = cartProducts.findIndex((item) => item.id === product.id);
@@ -17,7 +18,8 @@ export function CartProvider({ children }) {
     let newCartProduts = [];
     if (cartIndex >= 0) {
       newCartProduts = cartProducts;
-      newCartProduts[cartIndex].quantity = newCartProduts[cartIndex].quantity + 1;
+      newCartProduts[cartIndex].quantity =
+        newCartProduts[cartIndex].quantity + 1;
 
       setCartProduts(newCartProduts);
     } else {
@@ -38,7 +40,9 @@ export function CartProvider({ children }) {
 
   const increaseProducts = async (productId) => {
     const newCart = cartProducts.map((product) => {
-      return product.id === productId ? { ...product, quantity: product.quantity + 1 } : product;
+      return product.id === productId
+        ? { ...product, quantity: product.quantity + 1 }
+        : product;
     });
 
     setCartProduts(newCart);
@@ -50,7 +54,9 @@ export function CartProvider({ children }) {
 
     if (cartProducts[cartIndex].quantity > 1) {
       const newCart = cartProducts.map((product) => {
-        return product.id === productId ? { ...product, quantity: product.quantity - 1 } : product;
+        return product.id === productId
+          ? { ...product, quantity: product.quantity - 1 }
+          : product;
       });
       setCartProduts(newCart);
       await updateLocalStorage(newCart);
@@ -70,9 +76,14 @@ export function CartProvider({ children }) {
   }, []);
 
   return (
-    <CartContext.Provider value={{
-      putProdutsInCart, cartProducts, increaseProducts, decreaseProducts, deleteProducts,
-    }}
+    <CartContext.Provider
+      value={{
+        putProdutsInCart,
+        cartProducts,
+        increaseProducts,
+        decreaseProducts,
+        deleteProducts,
+      }}
     >
       {children}
     </CartContext.Provider>

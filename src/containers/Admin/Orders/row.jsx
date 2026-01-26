@@ -1,8 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
-/* eslint-disable react/no-unused-prop-types */
+
 /* eslint-disable react/require-default-props */
-/* eslint-disable no-undef */
-/* eslint-disable react/destructuring-assignment */
+
 /* eslint-disable no-underscore-dangle */
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -66,14 +65,16 @@ export function Row({ row, orders, setOrders }) {
           <ReactSelectSyled
             options={StatusOrder.filter((status) => status.value !== 'Todos')}
             menuPortalTarget={document.body}
-            defaultValue={StatusOrder.find((option) => option.value === products.status) || null}
+            defaultValue={
+              StatusOrder.find((option) => option.value === products.status) ||
+              null
+            }
             onChange={(newStatus) => {
               setNewStatus(products.orderId, newStatus.value);
             }}
             isLoading={isLoading}
           />
         </TableCell>
-
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -88,7 +89,6 @@ export function Row({ row, orders, setOrders }) {
                     <TableCell>Quantidade</TableCell>
                     <TableCell>Produto</TableCell>
                     <TableCell>Categoria</TableCell>
-
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -100,7 +100,10 @@ export function Row({ row, orders, setOrders }) {
                       <TableCell>{productRow.name}</TableCell>
                       <TableCell>{productRow.category}</TableCell>
                       <TableCell>
-                        <ProductsImg src={productRow.url} alt="imagen do produto" />
+                        <ProductsImg
+                          src={productRow.url}
+                          alt="imagen do produto"
+                        />
                       </TableCell>
                     </TableRow>
                   ))}

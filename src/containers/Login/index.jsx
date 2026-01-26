@@ -1,7 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable jsx-a11y/img-redundant-alt */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable import/named */
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,15 +12,25 @@ import { Button, ErrorMessage } from '../../components/index';
 import { useUser } from '../../hooks/UserContext';
 import api from '../../services/api';
 import {
-  Container, Containeriten, Input, Label, LoginImage, LogoImg, SingInLink,
+  Container,
+  Containeriten,
+  Input,
+  Label,
+  LoginImage,
+  LogoImg,
+  SingInLink,
 } from './style';
 
 export function Login() {
   const navigate = useNavigate();
   const { putUserData } = useUser();
   const schema = Yup.object().shape({
-    email: Yup.string().email('Digite um email válido!').required('Email obrigatório!'),
-    password: Yup.string().required('A senha é obrigatória').min(6, 'Sua senha deve ter no mínimo 6 dígitos! '),
+    email: Yup.string()
+      .email('Digite um email válido!')
+      .required('Email obrigatório!'),
+    password: Yup.string()
+      .required('A senha é obrigatória')
+      .min(6, 'Sua senha deve ter no mínimo 6 dígitos! '),
   });
 
   const {
@@ -44,7 +52,6 @@ export function Login() {
         success: 'Bem-vindo(a)!',
         error: 'Verifique seus dados!',
       },
-
     );
 
     console.log('teste');
@@ -61,9 +68,7 @@ export function Login() {
   };
 
   return (
-
     <Container>
-
       <LoginImage src={ImgLogin} alt="Login-image" />
 
       <Containeriten>
@@ -73,25 +78,33 @@ export function Login() {
 
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
           <Label>Email</Label>
-          <Input type="email" {...register('email')} erro={errors.email?.message} />
+          <Input
+            type="email"
+            {...register('email')}
+            erro={errors.email?.message}
+          />
           <ErrorMessage>{errors.email?.message}</ErrorMessage>
           <Label>Senha</Label>
-          <Input type="password" {...register('password')} erro={errors.password?.message} />
+          <Input
+            type="password"
+            {...register('password')}
+            erro={errors.password?.message}
+          />
           <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
           <Button type="submit" style={{ marginTop: 25 }}>
             Sing Up
           </Button>
-
         </form>
 
         <SingInLink>
           Não possui uma conta ?
-          <Link to="/cadastro" style={{ color: 'white' }}> Sing Up</Link>
+          <Link to="/cadastro" style={{ color: 'white' }}>
+            {' '}
+            Sing Up
+          </Link>
         </SingInLink>
-
       </Containeriten>
-
     </Container>
   );
 }

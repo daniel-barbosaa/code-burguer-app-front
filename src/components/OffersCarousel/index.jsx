@@ -6,9 +6,7 @@ import Offers from '../../assets/OFERTAS.png';
 import { useCart } from '../../hooks/CartContext';
 import api from '../../services/api';
 import formatCurrency from '../../utils/formatCurrency';
-import {
-  Container, CategoryImg, ContainerItems, Button, Image,
-} from './style';
+import { Container, CategoryImg, ContainerItems, Button, Image } from './style';
 
 export function OffersCarousel() {
   const { putProdutsInCart } = useCart();
@@ -20,7 +18,12 @@ export function OffersCarousel() {
     async function loadOffers() {
       const { data } = await api.get('products');
 
-      const onlyOffers = data.filter((product) => product.offer).map((product) => ({ ...product, formatedPrice: formatCurrency(product.price) }));
+      const onlyOffers = data
+        .filter((product) => product.offer)
+        .map((product) => ({
+          ...product,
+          formatedPrice: formatCurrency(product.price),
+        }));
 
       setOffers(onlyOffers);
     }
@@ -37,27 +40,29 @@ export function OffersCarousel() {
   ];
 
   return (
-
     <Container>
       <CategoryImg src={Offers} alt="logo-da-oferta" />
-      <Carousel itemsToShow={5} breakPoints={breakPoints} style={{ width: '95%' }}>
-        {offers && offers.map((product) => (
-          <ContainerItems key={product.id}>
-            <Image src={product.url} alt="imagem-do-produto" />
-            <p>{product.name}</p>
-            <p style={{ color: 'black' }}>
-              {product.formatedPrice}
-            </p>
-            <Button onClick={() => {
-              putProdutsInCart(product);
-              navigate('/carrinho');
-            }}
-            >
-              Peça agora
-
-            </Button>
-          </ContainerItems>
-        ))}
+      <Carousel
+        itemsToShow={5}
+        breakPoints={breakPoints}
+        style={{ width: '95%' }}
+      >
+        {offers &&
+          offers.map((product) => (
+            <ContainerItems key={product.id}>
+              <Image src={product.url} alt="imagem-do-produto" />
+              <p>{product.name}</p>
+              <p style={{ color: 'black' }}>{product.formatedPrice}</p>
+              <Button
+                onClick={() => {
+                  putProdutsInCart(product);
+                  navigate('/carrinho');
+                }}
+              >
+                Peça agora
+              </Button>
+            </ContainerItems>
+          ))}
       </Carousel>
     </Container>
   );

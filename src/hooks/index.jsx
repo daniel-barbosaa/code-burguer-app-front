@@ -5,13 +5,9 @@ import { UserProvider } from './UserContext';
 
 function AppProvider({ children }) {
   return (
-
     <CartProvider>
-      <UserProvider>
-        {children}
-      </UserProvider>
+      <UserProvider>{children}</UserProvider>
     </CartProvider>
-
   );
 }
 

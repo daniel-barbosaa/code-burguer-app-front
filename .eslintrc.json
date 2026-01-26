@@ -1,44 +1,41 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": ["airbnb",  "plugin:react-hooks/recommended" ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": ["eslint-plugin-import-helpers",  "react-hooks" ],
-    "rules": {
-       
-        "import-helpers/order-imports": [
-            "warn",
-            {
-                "newlinesBetween": "always", // new line between groups
-                "groups": [
-                    "module",
-                    "/^@shared/",
-                    ["parent", "sibling", "index"]
-                ],
-                "alphabetize": { "order": "asc", "ignoreCase": true }
-            }
-        ],
-        "react/react-in-jsx-scope": "off",
-        "react/button-has-type": "off",
-        "no-shadow": "off",
-        "linebreak-style": "off",
-        "import/no-extraneous-dependencies": "off",
-        "react/jsx-no-useless-fragment" : "off",
-        "no-unused-vars": "warn",
-        "import/prefer-default-export" : "off",
-        "react/prop-types": 0,
-        "react/jsx-no-constructed-context-values": "off",
-        "import/no-unresolved": "off",
-        "no-param-reassign": "off",
-        "max-len": "off",
-        "import/named": "off",
-        "arrow-body-style": "off"
-       
-        
-    }
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["airbnb", "plugin:react-hooks/recommended"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["eslint-plugin-import-helpers", "react-hooks"],
+  "rules": {
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/button-has-type": "off",
+    "no-shadow": "off",
+    "linebreak-style": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "no-unused-vars": "warn",
+    "import/prefer-default-export": "off",
+    "react/prop-types": 0,
+    "react/jsx-no-constructed-context-values": "off",
+    "import/no-unresolved": "off",
+    "no-param-reassign": "off",
+    "max-len": "off",
+    "import/named": "off",
+    "arrow-body-style": "off",
+    "eslint-disable jsx-a11y": true
+  }
 }

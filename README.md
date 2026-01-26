@@ -18,7 +18,7 @@
 
 ...
 
-# Descrição do projeto 
+# Descrição do projeto
 
 **CodeBurguer** esse é um projeto de um hamburgueria completo com funcionalidades diferentes para usuário comuns e administradores.
 
@@ -36,7 +36,7 @@
 
 :heavy_check_mark: Carrinho pesonalizado de pedidos, opção de aumentar ou diminuir unidades do produto, remover produto do carrinho
 
-:heavy_check_mark: Finalizar pedidos 
+:heavy_check_mark: Finalizar pedidos
 
 :heavy_check_mark: Adicionar e remover produtos da loja (para usuário admin)
 
@@ -44,32 +44,34 @@
 
 :heavy_check_mark: Adiciona acompanha e muda status do pedido feito, a caminho, finalizado (para usuário admin)
 
-
-# 🚀 Começando 
+# 🚀 Começando
 
 <p>Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.</p>
-
 
 ```bash
     #Clone o projeto interface
     $ git clone https://github.com/DaniMendess/code-burguer-app-front.git
 ```
+
 ```bash
     #Clone o projeto api
     $ git clone https://github.com/DaniMendess/code-burger-app-back-end.git
 ```
+
 ```bash
     #Entre no diretório
     cd code-burguer-app-front
 ```
+
 ## 🔧 Instalação
+
 ```bash
     #Instalando dependências
     $ npm install
 
-    ou 
+    ou
 
-    $ yarn  
+    $ yarn
 ```
 
 ### Instale o NodeJs na sua máquina
@@ -84,23 +86,17 @@
     #Entre no diretório
     $ npm run dev
 
-    ou 
-    
+    ou
+
     $ yarn dev
 ```
 
-## 🔨 Ferramentas utilizadas 
-- [React](https://react.dev) 
-- [Node](https://nodejs.org/en) 
+## 🔨 Ferramentas utilizadas
+
+- [React](https://react.dev)
+- [Node](https://nodejs.org/en)
 - [MongoDb](https://www.mongodb.com/pt-br)
 - [Postgres](https://www.postgresql.org)
 - [Insomnia](https://insomnia.rest/download)
 - [JWT](https://jwt.io/)
 - [Material UI](https://mui.com/material-ui/)
-
-
-
-
-
-
-

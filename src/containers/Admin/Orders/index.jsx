@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable no-underscore-dangle */
 import Paper from '@mui/material/Paper';
@@ -7,7 +6,8 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow'; import React, { useEffect, useState } from 'react';
+import TableRow from '@mui/material/TableRow';
+import React, { useEffect, useState } from 'react';
 
 import api from '../../../services/api';
 import StatusOrder from './order-status';
@@ -47,8 +47,12 @@ export function Orders() {
   }, [filteredOrders]);
 
   useEffect(() => {
-    const statusIndex = StatusOrder.findIndex((status) => status.id === activeStatus);
-    const newFilteredOrder = orders.filter((order) => order.status === StatusOrder[statusIndex].value);
+    const statusIndex = StatusOrder.findIndex(
+      (status) => status.id === activeStatus,
+    );
+    const newFilteredOrder = orders.filter(
+      (order) => order.status === StatusOrder[statusIndex].value,
+    );
     setFilteredOrders(newFilteredOrder);
   }, [orders]);
 
@@ -65,9 +69,16 @@ export function Orders() {
   return (
     <Container>
       <Menu>
-        {StatusOrder && StatusOrder.map((status) => (
-          <LinkMenu onClick={() => handleStatus(status)} isactivestatus={activeStatus === status.id ? 'true' : ''} key={status.id}>{status.label}</LinkMenu>
-        )) }
+        {StatusOrder &&
+          StatusOrder.map((status) => (
+            <LinkMenu
+              onClick={() => handleStatus(status)}
+              isactivestatus={activeStatus === status.id ? 'true' : ''}
+              key={status.id}
+            >
+              {status.label}
+            </LinkMenu>
+          ))}
       </Menu>
       <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
@@ -82,12 +93,16 @@ export function Orders() {
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <Row key={row.orderId} row={row} orders={orders} setOrders={setOrders} />
+              <Row
+                key={row.orderId}
+                row={row}
+                orders={orders}
+                setOrders={setOrders}
+              />
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-
     </Container>
   );
 }
