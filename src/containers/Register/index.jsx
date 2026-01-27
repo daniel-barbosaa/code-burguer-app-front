@@ -1,126 +1,129 @@
-/* eslint-disable react/jsx-props-no-spreading */
-
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import * as Yup from 'yup';
-
-import ImgRegister from '../../assets/burguer3.svg';
-import Logo from '../../assets/logo.svg';
-import { Button, ErrorMessage } from '../../components/index';
-import api from '../../services/api';
+import { Link } from 'react-router-dom';
 import {
-  Container,
-  Containeriten,
-  Input,
-  Label,
-  RegisterImage,
-  LogoImg,
-  SingInLink,
-} from './style';
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Input } from '../../components/ui/input';
+import { Label } from '../../components/ui/label';
+
+import ImgRegister from '../../assets/background.svg';
+import Logo from '../../assets/logo.svg';
+import { useRegisterController } from './useRegisterController';
 
 export function Register() {
-  const navigate = useNavigate();
-
-  const schema = Yup.object().shape({
-    name: Yup.string().required('Nome é obrigatório'),
-    email: Yup.string()
-      .email('Digite um email válido')
-      .required('Email obrigatório!'),
-    password: Yup.string()
-      .required('A senha é obrigatória')
-      .min(6, 'Sua senha deve ter no mínimo 6 dígitos! '),
-    passwordConfirm: Yup.string()
-      .required('Confirme a senha')
-      .oneOf([Yup.ref('password')], 'As senhas não correspondem'),
-  });
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const onSubmit = async (clientData) => {
-    try {
-      const { status } = await api.post(
-        'users',
-        {
-          name: clientData.name,
-          email: clientData.email,
-          password: clientData.password,
-        },
-        { validateStatus: () => true },
-      );
-
-      if (status === 201 || status === 200) {
-        toast.success('Cadastro criado com sucesso, faça o login!');
-        setTimeout(() => {
-          navigate('/');
-        }, 2000);
-        navigate('/');
-      } else if (status === 409) {
-        toast.error('Email existente! Faça login para continuar.');
-      } else {
-        throw new Error();
-      }
-    } catch (err) {
-      toast.error('Falha no sistema, tente novamente em instantes!');
-    }
-  };
-
+  const { errors, handleSubmit, onSubmit, register } = useRegisterController();
   return (
-    <Container>
-      <RegisterImage src={ImgRegister} alt="register-image" />
-      <Containeriten>
-        <LogoImg src={Logo} alt="image-logo" />
-        <h1>Cadastre-se</h1>
-        <form noValidate onSubmit={handleSubmit(onSubmit)}>
-          <Label>Nome</Label>
-          <Input
-            type="text"
-            {...register('name')}
-            erro={errors.name?.message}
-          />
-          <ErrorMessage>{errors.name?.message}</ErrorMessage>
-          <Label>Email</Label>
-          <Input
-            type="email"
-            {...register('email')}
-            erro={errors.email?.message}
-          />
-          <ErrorMessage>{errors.email?.message}</ErrorMessage>
-          <Label>Senha</Label>
-          <Input
-            type="password"
-            {...register('password')}
-            erro={errors.password?.message}
-          />
-          <ErrorMessage>{errors.password?.message}</ErrorMessage>
-          <Label>Confirme a senha</Label>
-          <Input
-            type="password"
-            {...register('passwordConfirm')}
-            erro={errors.passwordConfirm?.message}
-          />
-          <ErrorMessage>{errors.passwordConfirm?.message}</ErrorMessage>
+    <div className="min-h-screen grid md:grid-cols-2">
+      <div
+        className="hidden md:block bg-cover bg-center"
+        style={{ backgroundImage: `url(${ImgRegister})` }}
+      />
 
-          <Button type="submit" style={{ marginTop: 25 }}>
-            Sing In
-          </Button>
-        </form>
+      <div className="flex items-center justify-center px-6">
+        <Card className="w-full max-w-sm shadow-none border-none">
+          <CardHeader className="space-y-3 text-center">
+            <img
+              src={Logo}
+              alt="CodeClub Burger"
+              className="mx-auto h-14 mb-16"
+            />
+            <CardTitle className="text-lg font-medium text-zinc-900">
+              <p className="font-bold text-2xl"> Crie sua conta</p>
+              <span className="text-xs text-zinc-500 mt-2">
+                Já possui uma conta?
+                <Link
+                  to="/login"
+                  className="text-violet-600 hover:text-violet-700 hover:underline"
+                >
+                  {' '}
+                  Faça login
+                </Link>
+              </span>
+            </CardTitle>
+          </CardHeader>
 
-        <SingInLink>
-          Já possui uma conta ?
-          <Link to="/login" style={{ color: 'white' }}>
-            {' '}
-            Sing In
-          </Link>
-        </SingInLink>
-      </Containeriten>
-    </Container>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate>
+            <CardContent className="space-y-4">
+              <div className="space-y-1">
+                <Label>Nome</Label>
+                <Input
+                  type="text"
+                  {...register('name')}
+                  className="
+                  focus-visible:ring-violet-500/30
+                  focus-visible:border-violet-600
+                "
+                />
+                {errors.name && (
+                  <p className="text-xs text-red-500">{errors.name.message}</p>
+                )}
+              </div>
+
+              <div className="space-y-1">
+                <Label>Email</Label>
+                <Input
+                  type="email"
+                  {...register('email')}
+                  className="
+                  focus-visible:ring-violet-500/30
+                  focus-visible:border-violet-600
+                "
+                />
+                {errors.email && (
+                  <p className="text-xs text-red-500">{errors.email.message}</p>
+                )}
+              </div>
+
+              <div className="space-y-1">
+                <Label>Senha</Label>
+                <Input
+                  type="password"
+                  {...register('password')}
+                  className="
+                  focus-visible:ring-violet-500/30
+                  focus-visible:border-violet-600
+                "
+                />
+                {errors.password && (
+                  <p className="text-xs text-red-500">
+                    {errors.password.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="space-y-1">
+                <Label>Confirmar senha</Label>
+                <Input
+                  type="password"
+                  {...register('passwordConfirm')}
+                  className="
+                  focus-visible:ring-violet-500/30
+                  focus-visible:border-violet-600
+                "
+                />
+                {errors.passwordConfirm && (
+                  <p className="text-xs text-red-500">
+                    {errors.passwordConfirm.message}
+                  </p>
+                )}
+              </div>
+            </CardContent>
+
+            <CardFooter className="flex flex-col gap-4">
+              <Button
+                type="submit"
+                className="w-full bg-violet-600 hover:bg-violet-700 text-white mt-6"
+              >
+                Criar conta
+              </Button>
+            </CardFooter>
+          </form>
+        </Card>
+      </div>
+    </div>
   );
 }
