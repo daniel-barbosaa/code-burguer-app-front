@@ -5,6 +5,5 @@ export * from './OffersCarousel';
 export * from './CardProducts';
 export * from './CartItems';
 export * from './cartResume';
-export * from './Header';
 export * from './SideMenuAdmin';
 export * from './ErrorMessage';

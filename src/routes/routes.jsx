@@ -6,6 +6,7 @@ import { Home, Login, Products, Register, Cart, Admin } from '../pages/index';
 import PrivateRoute from './privete-route';
 import { Dashboard } from '@/pages/Dashboard';
 import { Foods } from '@/pages/Foods';
+import { CategoryPage } from '@/pages/CategoryPage';
 
 function routes() {
   return (
@@ -23,6 +24,7 @@ function routes() {
         >
           <Route index element={<Home />} />
           <Route path="comidas" element={<Foods />} />
+          <Route path="/comidas/:slug" element={<CategoryPage />} />
         </Route>
 
         <Route

@@ -6,15 +6,15 @@ import { SidebarProvider } from '@/components/ui/sidebar';
 function PrivateRoute({ children, isadmin }) {
   const user = localStorage.getItem('codeburguer:userData');
 
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
+  // if (!user) {
+  //   return <Navigate to="/login" />;
+  // }
 
-  const formatedUser = JSON.parse(user).admin;
+  // const formatedUser = JSON.parse(user).admin;
 
-  if (isadmin && !formatedUser) {
-    return <Navigate to="/" />;
-  }
+  // if (isadmin && !formatedUser) {
+  //   return <Navigate to="/" />;
+  // }
 
   return (
     <>
