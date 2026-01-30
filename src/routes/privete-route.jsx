@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { Header } from '../components/Header';
+import { SidebarProvider } from '@/components/ui/sidebar';
 
 function PrivateRoute({ children, isadmin }) {
   const user = localStorage.getItem('codeburguer:userData');
@@ -18,8 +18,7 @@ function PrivateRoute({ children, isadmin }) {
 
   return (
     <>
-      {isadmin ? '' : <Header />}
-      {children}
+      <SidebarProvider>{children}</SidebarProvider>
     </>
   );
 }

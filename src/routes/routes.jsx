@@ -2,15 +2,10 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import paths from '../constants/paths';
-import {
-  Home,
-  Login,
-  Products,
-  Register,
-  Cart,
-  Admin,
-} from '../containers/index';
+import { Home, Login, Products, Register, Cart, Admin } from '../pages/index';
 import PrivateRoute from './privete-route';
+import { Dashboard } from '@/pages/Dashboard';
+import { Foods } from '@/pages/Foods';
 
 function routes() {
   return (
@@ -22,10 +17,13 @@ function routes() {
           path="/"
           element={
             <PrivateRoute>
-              <Home />
+              <Dashboard />
             </PrivateRoute>
           }
-        />
+        >
+          <Route index element={<Home />} />
+          <Route path="comidas" element={<Foods />} />
+        </Route>
 
         <Route
           path="/produtos"

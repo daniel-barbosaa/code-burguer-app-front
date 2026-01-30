@@ -30,6 +30,7 @@
     "max-len": "off",
     "linebreak-style": "off",
     "arrow-body-style": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "react/jsx-wrap-multilines": "off"
   }
 }
