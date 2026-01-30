@@ -1,6 +1,6 @@
 import { Beer } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import BurguerWopper from '../../assets/wopper.png';
+
 import { Card } from '@/components/ui/card';
 
 const categories = [
