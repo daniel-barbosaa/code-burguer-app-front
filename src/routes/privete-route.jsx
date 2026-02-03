@@ -1,8 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { SidebarProvider } from '@/components/ui/sidebar';
-
 function PrivateRoute({ children, isadmin }) {
   const user = localStorage.getItem('codeburguer:userData');
 
@@ -16,11 +14,7 @@ function PrivateRoute({ children, isadmin }) {
   //   return <Navigate to="/" />;
   // }
 
-  return (
-    <>
-      <SidebarProvider>{children}</SidebarProvider>
-    </>
-  );
+  return <>{children}</>;
 }
 
 export default PrivateRoute;

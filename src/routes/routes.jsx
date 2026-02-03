@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import paths from '../constants/paths';
-import { Home, Login, Products, Register, Cart, Admin } from '../pages/index';
+import { Home, Login, Products, Register, Cart, Admin } from '../view/index';
 import PrivateRoute from './privete-route';
-import { Dashboard } from '@/pages/Dashboard';
-import { Foods } from '@/pages/Foods';
-import { CategoryPage } from '@/pages/CategoryPage';
+import { DashboardUser } from '@/view/User/layout';
+import { Foods } from '@/view/User/Foods';
+import { CategoryPage } from '@/view/User/Category';
 
 function routes() {
   return (
@@ -18,13 +18,14 @@ function routes() {
           path="/"
           element={
             <PrivateRoute>
-              <Dashboard />
+              <DashboardUser />
             </PrivateRoute>
           }
         >
           <Route index element={<Home />} />
           <Route path="comidas" element={<Foods />} />
           <Route path="/comidas/:slug" element={<CategoryPage />} />
+          <Route path="/carrinho" element={<Cart />} />
         </Route>
 
         <Route

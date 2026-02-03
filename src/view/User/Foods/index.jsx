@@ -30,7 +30,7 @@ export function Foods() {
   return (
     <div>
       <h1 className="text-3xl font-bold mb-8">Categorias</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:gap-8">
         {categories.map((category) => (
           <Link
             to={`/comidas/${category.name.toLowerCase()}`}

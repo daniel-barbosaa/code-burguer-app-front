@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-import BurguerWopper from '../../assets/wopper.png';
+import BurguerWopper from '../../../assets/wopper.png';
 import { Card } from '@/components/ui/card';
 
-import { DrawerItem } from '../components/drawer-item';
+import { DrawerItem } from '../../components/drawer-item';
 
 const categoryItems = [
   {
@@ -45,7 +45,7 @@ export function CategoryPage() {
   return (
     <div>
       <h1 className="text-3xl font-bold mb-8 capitalize">{slug}</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:gap-8">
         {categoryItems.map((item) => (
           <Card
             className="flex flex-col items-center w-full border-none shadow-lg gap-2 transition-transform duration-300
