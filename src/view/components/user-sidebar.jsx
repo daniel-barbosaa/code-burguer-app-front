@@ -1,4 +1,4 @@
-import { ChefHat, Hamburger, Home } from 'lucide-react';
+import { ChefHat, Hamburger, UtensilsCrossed } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 import {
@@ -18,18 +18,18 @@ import { Button } from '@/components/ui/button';
 
 const items = [
   {
-    title: 'Home',
+    title: 'Cardápio',
     url: '/',
-    icon: Home,
+    icon: UtensilsCrossed,
   },
   {
-    title: 'Alimentos & Bebidas',
+    title: 'Meu pedidos',
     url: '/comidas',
     icon: Hamburger,
   },
 ];
 
-export function SidebarNavigate() {
+export function UserSidebar() {
   const location = useLocation();
 
   return (

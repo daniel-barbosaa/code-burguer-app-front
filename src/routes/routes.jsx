@@ -2,11 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import paths from '../constants/paths';
-import { Home, Login, Products, Register, Cart, Admin } from '../view/index';
+import { Login, Products, Register, Cart, Admin, Menu } from '../view/index';
 import PrivateRoute from './privete-route';
 import { DashboardUser } from '@/view/User/layout';
-import { Foods } from '@/view/User/Foods';
-import { CategoryPage } from '@/view/User/Category';
 
 function routes() {
   return (
@@ -22,9 +20,7 @@ function routes() {
             </PrivateRoute>
           }
         >
-          <Route index element={<Home />} />
-          <Route path="comidas" element={<Foods />} />
-          <Route path="/comidas/:slug" element={<CategoryPage />} />
+          <Route index element={<Menu />} />
           <Route path="/carrinho" element={<Cart />} />
         </Route>
 
