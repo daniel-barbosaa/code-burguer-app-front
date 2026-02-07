@@ -2,7 +2,12 @@ import { Sheet, SheetContent, SheetClose } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import BurguerWopper from '../../assets/wopper.png';
 
-export function ProductSheet({ open, onOpenChange }) {
+interface ProductSheetProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export function ProductSheet({ open, onOpenChange }: ProductSheetProps) {
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent>
@@ -45,7 +50,10 @@ export function ProductSheet({ open, onOpenChange }) {
           </div>
 
           <div className="w-full mt-auto mb-6">
-            <Button className="w-full bg-bfgold text-foreground font-semibold hover:bg-bfgold/80">
+            <Button
+              className="w-full bg-bfgold text-foreground font-semibold hover:bg-bfgold/80"
+              onClick={() => onOpenChange(false)}
+            >
               Adicionar à sacola
             </Button>
           </div>

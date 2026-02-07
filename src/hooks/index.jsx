@@ -1,13 +1,11 @@
-import React from 'react';
-
-import { CartProvider } from './CartContext';
+import { BagProvider } from './bag-context';
 import { UserProvider } from './UserContext';
 
 function AppProvider({ children }) {
   return (
-    <CartProvider>
+    <BagProvider>
       <UserProvider>{children}</UserProvider>
-    </CartProvider>
+    </BagProvider>
   );
 }
 

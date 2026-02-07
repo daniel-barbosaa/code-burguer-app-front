@@ -1,10 +1,10 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import paths from '../constants/paths';
-import { Login, Products, Register, Cart, Admin, Menu } from '../view/index';
+import { Login, Register, Admin, Menu } from '../view/index';
 import PrivateRoute from './privete-route';
 import { DashboardUser } from '@/view/User/layout';
+import { Checkout } from '@/view/User/Checkout';
 
 function routes() {
   return (
@@ -21,26 +21,8 @@ function routes() {
           }
         >
           <Route index element={<Menu />} />
-          <Route path="/carrinho" element={<Cart />} />
         </Route>
-
-        <Route
-          path="/produtos"
-          element={
-            <PrivateRoute>
-              <Products />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/carrinho"
-          element={
-            <PrivateRoute>
-              <Cart />
-            </PrivateRoute>
-          }
-        />
-
+        <Route path="/checkout" element={<Checkout />} />
         <Route
           path={paths.Order}
           element={

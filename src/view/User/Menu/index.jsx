@@ -4,6 +4,8 @@ import { Card } from '@/components/ui/card';
 import BurguerWopper from '../../../assets/wopper.png';
 import { ProductSheet } from '@/view/components/product-sheet';
 import { Button } from '@/components/ui/button';
+import { BagSheet } from '../../components/bag-sheet';
+import { useBag } from '../../../hooks/bag-context';
 
 export const categoryItems = [
   {
@@ -12,7 +14,6 @@ export const categoryItems = [
     slug: 'burger-classico',
     price: 24.9,
     weigth: 180,
-    image: '/images/burger-classico.png',
     category: 'hamburguer',
     isOffer: false,
     description: 'Pão brioche, hambúrguer bovino, queijo e molho especial',
@@ -23,7 +24,6 @@ export const categoryItems = [
     slug: 'cheddar-bacon',
     price: 29.9,
     weigth: 220,
-    image: '/images/cheddar-bacon.png',
     category: 'hamburguer',
     isOffer: true,
     description: 'Hambúrguer artesanal, cheddar cremoso e bacon crocante',
@@ -34,7 +34,6 @@ export const categoryItems = [
     slug: 'burger-duplo',
     price: 34.9,
     weigth: 300,
-    image: '/images/burger-duplo.png',
     category: 'hamburguer',
     isOffer: true,
     description: 'Dois hambúrgueres, queijo duplo e pão brioche',
@@ -44,7 +43,6 @@ export const categoryItems = [
     name: 'Batata Frita',
     slug: 'batata-frita',
     price: 14.9,
-    image: '/images/batata-frita.png',
     category: 'acompanhamento',
     isOffer: false,
     description: 'Batata frita crocante',
@@ -54,7 +52,6 @@ export const categoryItems = [
     name: 'Refrigerante Lata',
     slug: 'refrigerante-lata',
     price: 6.9,
-    image: '/images/refrigerante.png',
     category: 'bebidas',
     isOffer: true,
     description: 'Coca-Cola, Guaraná ou Sprite',
@@ -63,6 +60,7 @@ export const categoryItems = [
 
 export function Menu() {
   const [isOpen, setIsOpen] = useState(false);
+  const { openBagSheet } = useBag();
   return (
     <div>
       <h1 className="text-2xl font-bold mb-8 capitalize">Hamburguers</h1>
@@ -110,13 +108,17 @@ export function Menu() {
       <ProductSheet open={isOpen} onOpenChange={setIsOpen} />
 
       <div className="fixed bottom-4 right-4 z-50 lg">
-        <Button className="size-12 rounded-full bg-bfgold text-black shadow-lg hover:bg-bfgold/70">
+        <Button
+          className="size-12 rounded-full bg-bfgold text-black shadow-lg hover:bg-bfgold/70"
+          onClick={openBagSheet}
+        >
           <Handbag />
           <span className="absolute -top-1 -right-1 h-5 min-w-5 rounded-full bg-black text-xs text-white flex items-center justify-center">
             3
           </span>
         </Button>
       </div>
+      <BagSheet />
     </div>
   );
 }
