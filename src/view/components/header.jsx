@@ -1,6 +1,7 @@
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useLocation } from 'react-router-dom';
 
 export const categories = [
   {
@@ -31,6 +32,15 @@ export const categories = [
 ];
 
 export function Header() {
+  const path = useLocation();
+
+  const routeIsNotMenu = path.pathname !== '/';
+
+  if (routeIsNotMenu) {
+    return null;
+  }
+
+  console.log(path);
   return (
     <header className="px-4 lg:px-8 pt-15 lg:pt-8 flex flex-col lg:flex-row justify-between">
       <Tabs defaultValue="all">

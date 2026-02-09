@@ -5,6 +5,7 @@ import { Login, Register, Admin, Menu } from '../view/index';
 import PrivateRoute from './privete-route';
 import { DashboardUser } from '@/view/User/layout';
 import { Checkout } from '@/view/User/Checkout';
+import { Orders } from '@/view/User/Orders';
 
 function routes() {
   return (
@@ -21,8 +22,10 @@ function routes() {
           }
         >
           <Route index element={<Menu />} />
+          <Route path="/meus-pedidos" element={<Orders />} />
         </Route>
         <Route path="/checkout" element={<Checkout />} />
+
         <Route
           path={paths.Order}
           element={

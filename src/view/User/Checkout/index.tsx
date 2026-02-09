@@ -38,7 +38,7 @@ export function Checkout() {
         <span className="text-xl font-semibold">Finalizar pedido</span>
       </header>
 
-      <main className="flex-1 overflow-y-auto bg-zinc-50 p-6">
+      <main className="flex-1 overflow-y-auto p-6">
         <section className="bg-card border border-border rounded-xl p-4 max-w-2xl mx-auto">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-semibold">Seu pedido</h2>

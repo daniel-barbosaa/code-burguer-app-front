@@ -23,8 +23,8 @@ const items = [
     icon: UtensilsCrossed,
   },
   {
-    title: 'Meu pedidos',
-    url: '/comidas',
+    title: 'Meus pedidos',
+    url: '/meus-pedidos',
     icon: Hamburger,
   },
 ];

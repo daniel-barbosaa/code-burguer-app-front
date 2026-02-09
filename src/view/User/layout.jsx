@@ -19,7 +19,7 @@ export function DashboardUser() {
           </button>
         </div>
         <Header />
-        <div className="flex-1 px-4 py-4 sm:px-8 sm:py-8 lg:px-8 lg:py-8">
+        <div className="flex-1 px-4 py-4 sm:px-8 sm:py-8 lg:px-8 lg:py-8 bg-background h-full">
           <Outlet />
         </div>
       </main>

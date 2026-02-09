@@ -62,7 +62,7 @@ export function Menu() {
   const [isOpen, setIsOpen] = useState(false);
   const { openBagSheet } = useBag();
   return (
-    <div>
+    <>
       <h1 className="text-2xl font-bold mb-8 capitalize">Hamburguers</h1>
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:gap-6 mt-4">
@@ -119,6 +119,6 @@ export function Menu() {
         </Button>
       </div>
       <BagSheet />
-    </div>
+    </>
   );
 }
