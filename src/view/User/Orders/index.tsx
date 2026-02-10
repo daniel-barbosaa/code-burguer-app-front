@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card';
 export function Orders() {
   const date = '12/02/2026';
   return (
-    <main className="px-8 -mt-1.5 md:mt-0 md:p-0">
+    <>
       <div>
         <h1 className="text-2xl font-bold mb-2">Meus Pedidos</h1>
         <p className="text-sm text-muted-foreground">
@@ -15,7 +15,7 @@ export function Orders() {
       <div className="mt-10 space-y-4">
         <Card
           className="p-6 border-none
-        shadow-sm hover:shadow-md transition-shadow"
+        shadow-sm"
         >
           <div className="flex items-center justify-between gap-6">
             <div className="flex-1 grid grid-cols-1 sm:grid-cols-4 gap-4">
@@ -46,6 +46,6 @@ export function Orders() {
           </div>
         </Card>
       </div>
-    </main>
+    </>
   );
 }

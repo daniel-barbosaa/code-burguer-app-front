@@ -13,8 +13,6 @@ import {
 } from '@/components/ui/sidebar';
 
 import { cn } from '@/lib/utils';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
 
 const items = [
   {
@@ -68,27 +66,7 @@ export function UserSidebar() {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="p-5 items-center">
-        <div className="flex flex-col justify-center items-center gap-3 shadow-lg rounded-lg p-2 w-full">
-          <Avatar className="size-10 bg-zinc-100 flex items-center justify-center">
-            <AvatarImage
-              src="https://github.com/evilrabbit.png"
-              alt="@evilrabbit"
-            />
-            <AvatarFallback className="uppercase">DA</AvatarFallback>
-          </Avatar>
-          <div className="flex flex-col items-center">
-            <span className="text-sm font-medium">Daniel Mendes</span>
-            <span className="text-xs text-zinc-400 font-medium">
-              Administrador - 4h 15m
-            </span>
-          </div>
-          <div className="flex flex-col w-full gap-2">
-            <Button variant="secondary" className="w-full">
-              Abrir perfil
-            </Button>
-          </div>
-        </div>
+      <SidebarFooter className="pb-4 items-center">
         <p className="text-xs text-zinc-400 font-medium mt-4">
           © 2026 BigFood App
         </p>

@@ -31,7 +31,7 @@ export const categories = [
   },
 ];
 
-export function Header() {
+export function MenuToolBar() {
   const path = useLocation();
 
   const routeIsNotMenu = path.pathname !== '/';
@@ -39,10 +39,8 @@ export function Header() {
   if (routeIsNotMenu) {
     return null;
   }
-
-  console.log(path);
   return (
-    <header className="px-4 lg:px-8 pt-15 lg:pt-8 flex flex-col lg:flex-row justify-between">
+    <header className="px-4 py-4 md:pt-9 lg:px-8 flex flex-col lg:flex-row justify-between">
       <Tabs defaultValue="all">
         <TabsList variant="line">
           {categories.map((category) => (
